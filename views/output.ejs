@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Feedback form for Ancestry.com</title>
+    <meta name="description" content="DESCRIPTION">
+    <link rel="stylesheet" href="PATH">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!--[if lt IE 9]>
+    <script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>Stats till date</h2>
+      <div class="row">
+        <div class="col-lg-6">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Average Age</td>
+                <td><%= response.avg_age %></td>
+              </tr>
+              <tr>
+                <td>Average Rating</td>
+                <td><%= response.avg_rating %></td>
+              </tr>
+              <tr>
+                <td>Gender Split</td>
+                <td>
+                  <span>Male: <span class="badge"><%= response.gender_split.male %></span></span>
+                  <span>Female: <span class="badge"><%= response.gender_split.female %></span></span>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Total Applicants</strong></td>
+                <td>
+                  <strong><%= response.total %></strong>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-lg-6">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Country</th>
+                <th>Applicants</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(var country in response.country_split) { %>
+                <tr>
+                  <td><%= country %></td>
+                  <td><%= response.country_split[country] %></td>
+                </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
